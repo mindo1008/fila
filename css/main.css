@@ -1,0 +1,764 @@
+@charset "utf-8";
+
+#wrapper {
+    position: relative;
+    min-width: 1440px;
+    /* -본문 컨텐츠의 안전사이즈 : 1440px
+    -wrapper의 기본 너비값은 body태그의 너비값에 의해 정해짐.
+    -body태그의 너비값은 브라우저 폭에 의해 정해짐.
+    -브라우저가 좁아질 경우 wrapper의 폭도 좁아지면서 컨텐츠의 정렬,배경색,테두리 등에 영향을 끼침.
+    -최소너비값을 지정해두면 브라우저 폭이 줄어들어도 wrapper의 너비값은 1400px로 고정 
+    -브라우저의 폭이 늘어날때는 wrapper의 너비도 같이 늘어남.*/
+}
+
+/* 탑 배너 */
+#topBanner {
+    position: relative;
+    height: 40px;
+    background-color: #002053;
+}
+
+#topBanner .content>a {
+    display: block;
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #fff;
+    line-height: 40px;
+    text-align: center;
+}
+
+#topBanner .btnClose {
+    position: absolute;
+    top: 4px;
+    right: 40px;
+}
+
+#topBanner .btnClose button {
+    width: 32px;
+    height: 32px;
+    border: 0;
+    text-indent: -99999px;
+    background-image: url(../img/btn_x_wh_32x32.png);
+    background-color: transparent;
+
+    /* 공간은 그대로, 글자내용만 화면의 왼쪽으로 이동됨.
+    값을 크게 만들어 어떤 크기의 화면에서도 보이지 않게 만듬. */
+}
+
+/* 헤더 영역 */
+#header {
+    position: absolute;
+    top: 40px;
+    left: 0;
+    display: flex;
+    width: 100%;
+    height: 100px;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    padding-left: 40px;
+    padding-right: 40px;
+    z-index: 500;
+}
+
+/* 
+box-sizing은 width속성의 범위 기준을 결정하는 속성.
+ {box-sizing: content-box;}
+ width값의 범위가 여백과 테두리를 제외하고 실제 내용이 처리될수 있는 공간을 가리킴.
+  {box-sizing: border-box;}
+  width값의 범위가 테두리 끝에서 끝까지로 인식됨.
+  너비값으로 지정된 범위 안에서 테두리와 여백이 표현되고, 컨텐츠는 테두리와 여백이 표현된 나머지 영역에 맞춰 작성됨.
+*/
+#header .logo>a {
+    display: block;
+    width: 100px;
+    height: 32px;
+    text-indent: -99999px;
+    background-image: url(../img/logo_wh.png);
+}
+
+#header .gnb {
+    display: flex;
+}
+
+/* 화면을 장식하는 요소를 위해 html에 태그를 만들 수 있지만, html 입장에서 보면 의미없는 태그가 만들어지는 것과 같음.
+이때는 css에서 가상태그를 활용하면 됨.
+각 블럭요소 태그는 2개의 가상태그를 가질 수 있음.
+선택자::before => 선택자의 첫째 자식요소로 인식되는 가상태그 
+선택자::after => 선택자의 막내 자식요소로 인식되는 가상태그
+
+가상태그를 사용하기 위해서는 content속성이 필수로 있어야함.
+여기서는 공간만 필요한 상태니 content속성의 값을 공백처리함.
+
+가상태그는 인라인 요소의 성질을 가짐.
+공간을 처리하기 위해 태그 성질을 block으로 처리해야함.
+(여기서는 display속성을 지워도 공간을 표시해줌 -> flex의 영향때문임) 
+ */
+#header .gnb .g1::after {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 12px;
+    margin-top: 7px;
+    margin-right: 32px;
+    background-color: #fff;
+}
+
+#header .gnb li a {
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+}
+
+#header .gnb ul {
+    display: flex;
+    gap: 32px;
+}
+
+#header .icon li a,
+#header .icon button {
+    display: block;
+    width: 56px;
+    height: 56px;
+    text-indent: -99999px;
+}
+
+#header .icon ul {
+    display: flex;
+}
+
+#header .icon .location {
+    background-image: url(../img/ico-store-wh-56x56.png);
+}
+
+#header .icon .search button {
+    border: 0;
+    background-color: transparent;
+    background-image: url(../img/ico-search-wh-56x56.png);
+}
+
+#header .icon .login {
+    background-image: url(../img/ico-mypage-wh-56x56.png);
+}
+
+#header .icon .cart {
+    position: relative;
+    background-image: url(../img/ico-cart-wh-56x56.png);
+}
+
+#header .icon .cart .count {
+    position: absolute;
+    display: block;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    top: 8px;
+    right: 7px;
+    font-size: 10px;
+    text-align: center;
+    line-height: 20px;
+    color: #fff;
+    background-color: #002053;
+}
+
+.mainHero {
+    position: relative;
+}
+
+.mainHero .slide {
+    position: relative;
+    overflow: hidden;
+}
+
+.mainHero .slideImg {
+    width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.mainHero .slideImg img {
+    margin-left: -240px;
+}
+
+.mainHero .slide .slideText {
+    position: absolute;
+    left: 50%;
+    bottom: 169px;
+    margin-left: -720px;
+
+}
+
+.mainHero .slideText .slideTitle {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #fff;
+}
+
+.mainHero .slideText>a {
+    display: inline-block;
+    padding: 0 40px;
+    font-size: 16px;
+    border: 1px solid #fff;
+    border-radius: 25px;
+    color: #fff;
+    line-height: 48px;
+}
+
+.mainHero .mainSlideController {
+    display: flex;
+    position: absolute;
+    left: 50%;
+    margin-left: -720px;
+    bottom: 80px;
+    width: 1440px;
+}
+
+.mainHero .mainPager {
+    flex: 1;
+    /* 
+    플랙스 아이템의 너비값을 플랙시블(유연한)하게 만들어줌.
+    현재 오른쪽에 배치된 이전/다음버튼의 너비값과 버튼 사이의 간격값이 px로 
+    정해진 값이 있음.
+    flex:1 값을 적용하게되면 부모태그의 너비값에서  오른쪽의 고정값을 제외한
+    나머지를 자신의 너비값으로 사용하도록 만들 수 있음.*/
+    margin-right: 23px;
+
+}
+
+.mainHero .mainPager ul {
+    display: flex;
+}
+
+.mainHero .mainPager li {
+    width: 16.66%;
+    opacity: 0.2;
+}
+
+.mainHero .mainPager .active {
+    opacity: 1;
+}
+
+.mainHero .mainPager li button {
+    width: 100%;
+    height: 40px;
+    text-indent: -99999px;
+
+}
+
+.mainHero .mainPager span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+}
+
+.mainHero .mainSlideController p button {
+    width: 40px;
+    height: 40px;
+    text-indent: -99999px;
+}
+
+.mainHero .mainSlideController .btnPrev {
+    background-image: url(../img/btn_prev_wh_40x40.png);
+    margin-right: 2px;
+}
+
+.mainHero .mainSlideController .btnNext {
+    background-image: url(../img/btn_next_wh_40x40.png);
+}
+
+.itemListWrap {
+    width: 1440px;
+    margin: 0 auto;
+    margin-bottom: 160px;
+}
+
+.itemListWrap .titleText {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    margin-top: 160px;
+    text-align: center;
+}
+
+.itemListWrap .hashTabBtn ul {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.itemListWrap .hashTabBtn button {
+    /* 
+    버튼태그의 박스모델은 box-sizing: border-box로 지정되어있음.
+     */
+    height: 37px;
+    padding-bottom: 10px;
+    font-size: 18px;
+    color: #666;
+}
+
+.itemListWrap .hashTabBtn .active button {
+    color: #121212;
+    border-bottom: 2px solid #121212;
+}
+
+.itemListWrap .itemList ul {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.itemListWrap .itemList ul li {
+    position: relative;
+    width: 345px;
+}
+
+.itemListWrap .itemList ul li img {
+    width: 100%;
+    height: auto;
+}
+
+.itemListWrap .itemList ul li .price {
+    font-size: 16px;
+    color: #121212;
+}
+
+.itemListWrap .itemList ul li .female {
+    font-size: 14px;
+    color: #121212;
+    margin-bottom: 4px;
+}
+
+.itemListWrap .itemList ul li .itemName {
+    font-size: 18px;
+    font-weight: bold;
+    color: #121212;
+    margin-bottom: 20px;
+}
+
+.itemListWrap .itemList p button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: block;
+    width: 52px;
+    height: 52px;
+    background-image: url(../img/ico-heart-gr-52x52.png);
+    text-indent: -99999px;
+}
+
+.itemListWrap .itemList ul li .female {
+    margin-top: 12px;
+}
+
+.special {
+    width: 1440px;
+    margin: 0 auto;
+    margin-bottom: 160px;
+}
+
+.special .specialTitle {
+    text-align: center;
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+
+.special .specialList {
+    width: 1440px;
+}
+
+.special ul {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+}
+
+.special ul li {
+    width: 464px;
+    height: 623px;
+}
+
+.special ul li .spePhoto img {
+    width: 100%;
+    height: auto;
+}
+
+.special ul li img {
+    margin-bottom: 32px;
+}
+
+.special ul li .speTitle {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #121212;
+    margin-bottom: 8px;
+}
+
+.special ul li .explanation {
+    text-align: center;
+    font-size: 16px;
+    color: #888888;
+    margin-bottom: 24px;
+}
+
+.special ul li .click {
+    display: block;
+    width: 160px;
+    height: 40px;
+    align-content: center;
+    text-align: center;
+    font-size: 14px;
+    color: #121212;
+    border: 1px solid #dddddd;
+    border-radius: 50px;
+    margin-left: 152px;
+
+}
+
+.style4 .styleTitle {
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.style4 .style {
+    overflow: hidden;
+}
+
+.style4 .style ul {
+    display: flex;
+    padding: 0 20px;
+    width: 3340px;
+    justify-content: space-between
+}
+
+.style4 .style ul li {
+    width: 400px;
+    margin-bottom: 60px;
+}
+
+.style4 .style ul li img {
+    width: 100%;
+    height: auto;
+}
+
+.styleBtn {
+    width: 120px;
+    height: 40px;
+    margin: 0 auto;
+    margin-bottom: 160px;
+}
+
+.style4 .styleBtn .styleButton {
+    display: block;
+    line-height: 38px;
+    font-size: 14px;
+    text-align: center;
+    align-content: center;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    color: #121212;
+}
+
+/* S.메인5-커뮤니티 */
+.community {
+    width: 1440px;
+    margin: 0 auto;
+    margin-bottom: 160px;
+}
+
+.community ul li {
+    width: 464px;
+}
+
+.community ul li .comPhoto {
+    margin-bottom: 24px;
+}
+
+.community ul li .comPhoto img {
+    width: 100%;
+    height: auto;
+}
+
+.community .communityTitle {
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.community ul {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 60px;
+}
+
+.community .comThema {
+    font-size: 14px;
+    color: #121212;
+    margin-bottom: 4px;
+}
+
+.community .comTitle {
+    font-size: 18px;
+    font-weight: bold;
+    color: #121212;
+    margin-bottom: 20px;
+}
+
+.community .commu {
+    font-size: 16px;
+    color: #999999;
+}
+
+.community .comBtn {
+    width: 120px;
+    margin: auto;
+}
+
+.community .comBtn a {
+    display: block;
+    text-align: center;
+    border: 1px solid #dddddd;
+    border-radius: 20px;
+    line-height: 38px;
+    color: #121212
+}
+
+/* E.메인5-커뮤니티 */
+/* S.메인6 고객님을 위한 추천 상품 */
+
+.recommendItem {
+    width: 1440px;
+    margin: 0 auto;
+    margin-bottom: 160px;
+}
+
+.recommendItem .recommendTitle {
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.recommendItem ul {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 60px;
+}
+
+.recommendItem li {
+    position: relative;
+}
+
+.recommendItem .itemImg {
+    margin-bottom: 12px;
+}
+
+.recommendItem .itemImg img {
+    width: 345px;
+    height: auto;
+}
+
+.recommendItem .items a {
+    color: #121212;
+}
+
+.recommendItem .catagory {
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+.recommendItem .itemTitle {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.recommendItem .itemPrice {
+    font-size: 16px;
+}
+
+.recommendItem li p>button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: block;
+    width: 52px;
+    height: 52px;
+    background-image: url(../img/ico-heart-gr-52x52.png);
+    text-indent: -99999px;
+
+}
+
+.recommendItem .recommendBTN {
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    display: block;
+    width: 120px;
+    height: 40px;
+    text-align: center;
+    align-content: center;
+    margin: 0 auto;
+}
+
+/* E.메인6 고객님을 위한 추천 상품 */
+/* S.메인7 피드 */
+.feed {
+    width: 1440px;
+    margin: 0 auto;
+    margin-bottom: 160px;
+}
+
+.feed .insta {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.feed .insta .account a {
+    color: #121212;
+}
+
+.feed .instalogo {
+    display: block;
+    width: 30px;
+    height: 30px;
+    background-image: url(../img/ico-instar-32x32.png);
+    text-indent: -99999px;
+}
+
+.feed .account a {
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.feed ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.feed ul li {
+    width: 280px;
+}
+
+.feed ul li img {
+    width: 100%;
+    height: auto;
+
+}
+
+/* E.메인7 피드 */
+/* S.푸터 */
+.footer{
+    position: relative;
+    padding-top: 24px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 80px;
+    background-color: #eee;
+}
+.foot1{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 60px;
+    background-color: #EEE;   
+}
+.foot1 .left{
+    display: flex;
+    gap: 120px;
+}
+.foot1 .fLogo{
+    width: 80px;
+    height: 25px;
+    background-image: url(../img/logo_nv.png);
+    background-size: 100% auto;
+    text-indent: -99999px;
+}
+.foot .left .ir a{
+    font-size: 16px;
+    font-weight: 700;
+    color: #121212;
+}
+.foot1 .fSns ul{
+    display: flex;
+}
+.foot1 .fSns li a{
+    display: block;
+    height: 52px;
+    text-indent: -99999px;
+}
+.foot1 .fSns .insta a{
+    width: 52px;
+    background-image: url(../img/sns-instar-52x52.png);
+}
+.foot1 .fSns .facebook a{
+    width: 40px;
+    background-image: url(../img/sns-facebook-40x52.png);
+}
+.foot1 .fSns .youtube a{
+    width: 54px;
+    background-image: url(../img/sns-youtube-54x52.png);
+}
+.foot1 .fSns .kakao a{
+    width: 52px;
+    background-image: url(../img/sns-kakao-52x52.png);
+}
+.foot2{
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(149, 149, 196);
+}
+.foot2 .left{
+    padding-left: 200px;
+}
+.foot2 .fMenu{
+    margin-bottom: 40px;
+}
+.foot2 .fMenu ul, .foot2 .fSecurityMenu ul{
+    display: flex;
+}
+.foot2 .fMenu li::after, .foot2 .fSecurityMenu li::after{
+    content: "";
+    display: inline-block;
+    width: 1px;
+    height: 12px;
+    margin: 0 20px;
+    background-color: #121212;
+    opacity: 0.2;
+}
+.foot2 .fMenu li:last-child:after, .foot2 .fSecurityMenu li:last-child::after{
+    display: none;
+}
+.foot2 .fMenu li a,.foot2 .fSecurityMenu li a{
+    color: #121212;
+}
+.foot2 .fMenu .point a, .foot2 .fSecurityMenu .point a{
+    font-weight: 700;
+}
+.foot2 .fInfo, .foot2 .copyright{
+    margin-bottom: 40px;
+    line-height: 26px;
+    color: #121212;
+    opacity: 0.5;
+}
+.foot2 .fInfo span{
+    margin-right: 16px;
+}
+.foot2 .fInfo a, .foot2 .copyright a{
+    color: #121212;
+    text-decoration: underline;
+}
+.foot2 .copyright a{
+    margin-left: 16px;
+}
+/* E.푸터 */
